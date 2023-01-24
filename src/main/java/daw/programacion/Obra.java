@@ -39,10 +39,13 @@ public class Obra {
     public int getAltura() {
         return altura;
     }
+
     public int getPeso() {
         return peso;
     }
+
     public int getPiezas() {
         return piezas;
     }
+
 }
