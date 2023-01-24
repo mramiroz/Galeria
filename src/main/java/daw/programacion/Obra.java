@@ -19,4 +19,30 @@ public class Obra {
         this.peso = peso;
         this.piezas = piezas;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+    public int getPeso() {
+        return peso;
+    }
+    public int getPiezas() {
+        return piezas;
+    }
 }
