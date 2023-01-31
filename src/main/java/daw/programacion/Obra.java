@@ -2,6 +2,7 @@ package daw.programacion;
 
 public class Obra {
     private int id;
+    private String tipo;
     private String nombre;
     private String autor;
     private int precio;
@@ -9,9 +10,10 @@ public class Obra {
     private int peso;
     private int piezas;
     
-    public Obra(int id, String nombre, String autor, int precio, int altura, int peso, int piezas)
+    public Obra(int id, String tipo, String nombre, String autor, int precio, int altura, int peso, int piezas)
     {
         this.id = id;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.autor = autor;
         this.precio = precio;
@@ -22,6 +24,10 @@ public class Obra {
 
     public int getId() {
         return id;
+    }
+    
+    public String getTipo() {
+        return tipo;
     }
 
     public String getNombre() {
@@ -47,5 +53,4 @@ public class Obra {
     public int getPiezas() {
         return piezas;
     }
-
 }
