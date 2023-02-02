@@ -2,13 +2,11 @@ package daw.programacion;
 
 import java.util.Scanner;
 
-import javax.xml.namespace.QName;
-
 public class Data {
-    static Obra obra1 = new Escultura(1, "Escultura", "David", "Miguel Angel", 30, 2, 20, 1, "marmol");
-    static Obra obra2 = new Escultura(2, "Escultura", "Medusa", "Donatello", 30, 2, 20, 1, "metal");
-    static Obra obra3 = new Pintura(3, "Pintura", "Guernica", "Picasso", 30, 2, 20, 1, "oleo");
-    static Obra obra4 = new Pintura(4, "Pintura", "Tres delicias", "Bosco", 30, 2, 20, 3, "oleo");
+    static Obra obra1 = new Escultura(001, "Escultura", "David", "Miguel Angel", 30, 2, 20, 5,"Obra Renacimiento", "marmol");
+    static Obra obra2 = new Escultura(002, "Escultura", "Medusa", "Donatello", 30, 2, 20, 1,"Obra renacimiento", "metal");
+    static Obra obra3 = new Pintura(003, "Pintura", "Guernica", "Picasso", 30, 2, 20, 1, "Guerra Civil española", "oleo");
+    static Obra obra4 = new Pintura(004, "Pintura", "Tres delicias", "Bosco", 30, 2, 20, 3, "Triptico", "oleo");
     public static Obra[] arr = {
         obra1,
         obra2,
@@ -33,27 +31,28 @@ public class Data {
         System.out.print("Introduce el autor de la obra: ");
         String autor  = sc.nextLine();
         System.out.print("Introduce el precio de la obra: ");
-        int precio  = sc.nextInt();
+        double precio  = sc.nextDouble();
         System.out.print("Introduce el altura de la obra: ");
-        int altura  = sc.nextInt();
+        double altura  = sc.nextDouble();
         System.out.print("Introduce el número de piezas de la obra: ");
         int piezas  = sc.nextInt();
         System.out.print("Introduce el peso de la obra: ");
-        int peso  = sc.nextInt();
+        double peso  = sc.nextDouble();
         sc.nextLine();
+        System.out.print("Introduce la descripción de la obra: ");
+        String desc  = sc.nextLine();
         if (tipo == 1){
             System.out.print("Introduce el material de la obra: ");
             String material  = sc.nextLine();
-            nuevaObra = new Escultura(calcularId, "Escultura", nombre, autor, precio, altura, peso, piezas, material);
+            nuevaObra = new Escultura(calcularId, "Escultura", nombre, autor, precio, altura, peso, piezas, desc, material);
             out[out.length - 1] = nuevaObra;
         }
         else if (tipo == 2){
             System.out.print("Introduce la tecnica de la obra: ");
             String tecnica  = sc.nextLine();
-            nuevaObra = new Pintura(calcularId, "Pintura", nombre, autor, precio, altura, peso, piezas, tecnica);
+            nuevaObra = new Pintura(calcularId, "Pintura", nombre, autor, precio, altura, peso, piezas, desc, tecnica);
             out[out.length - 1] = nuevaObra;
         }
         arr = out;
     }
-    
 }

@@ -5,12 +5,13 @@ public class Obra {
     private String tipo;
     private String nombre;
     private String autor;
-    private int precio;
-    private int altura;
-    private int peso;
+    private double precio;
+    private double altura;
+    private double peso;
     private int piezas;
+    private String desc;
     
-    public Obra(int id, String tipo, String nombre, String autor, int precio, int altura, int peso, int piezas)
+    public Obra(int id, String tipo, String nombre, String autor, double precio, double altura, double peso, int piezas, String desc)
     {
         this.id = id;
         this.tipo = tipo;
@@ -20,6 +21,7 @@ public class Obra {
         this.altura = altura;
         this.peso = peso;
         this.piezas = piezas;
+        this.desc = desc;
     }
 
     public int getId() {
@@ -38,19 +40,47 @@ public class Obra {
         return autor;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public int getAltura() {
+    public double getAltura() {
         return altura;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return peso;
     }
 
     public int getPiezas() {
         return piezas;
     }
+    public String getDesc() {
+        return desc;
+    }
+
+    public String visualizarObraToString() {
+        return "Nombre: " + nombre + "\nAutor: " + autor + "\nPrecio: " + precio
+                + "\nAltura: " + altura + "\nPeso: " + peso + "\nPiezas: " + piezas + "\nDescripción: " + desc;
+    }
+
+    public String visualizarObrasToString() {
+        return id + " " + nombre + "  " +  autor + "  " + tipo + "  " +  precio
+                + "  " + altura + "  " + peso + "  " + piezas + "  " + desc;
+    }
+
+    public String imprimirEtiquetaToString() {
+        return "Nombre: " + nombre + "\nAutor: " + autor + "\nDescripción: " + desc;
+    }
+
+    public String mostrarObrasToString(){
+        return id + "   " + nombre; 
+    }
+
+    public String obternerPrecioToString() {
+        return "Nombre: " + nombre + "\nAltura(m): " + altura + "\nPeso(t): " + peso + "\nNumero de piezas: "  + piezas +
+         "\nPrecio(€): " + precio;
+    }
+
+    
 }
