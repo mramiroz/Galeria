@@ -13,4 +13,10 @@ public class Pintura extends Obra {
         this.tecnica = tecnica;
     }
 
+    public static double descuentoPintura(double precioVenta){
+        double precioFinal;
+        precioFinal = precioVenta * 0.01;
+        return (precioFinal);
+    }
+
 }

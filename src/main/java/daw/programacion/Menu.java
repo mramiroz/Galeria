@@ -29,20 +29,22 @@ public class Menu {
             switch(opcion)
             {
                 case VISUALIZAR_TODO:
-                    visualizarObras();
+                    Galeria.visualizarObras();
                     break;
                 case ALTA:
-                    Data.anadirObra();
+                    Galeria.anadirObra();
                     break;
                 case MODIFICAR:
+                    Galeria.modificarObra();
+                    break;
                 case VISUALIZAR_UNA:
-                    visualizarObra();
+                    Galeria.visualizarObra();
                     break;
                 case OBTENER_PRECIO:
-                    obtenerPrecio();
+                    Galeria.obtenerPrecio();
                     break;
                 case IMPRIMIR:
-                    imprimirEtiqueta();
+                    Galeria.imprimirEtiqueta();
                     break;
                 case FINALIZAR:
                     break ;
@@ -50,31 +52,5 @@ public class Menu {
                 System.out.println("Introduzca un numero valido");
             }
         }while(opcion != FINALIZAR);
-    }
-
-    private static void visualizarObras(){
-        System.out.println("Id  Nombre    Autor   Tipo Precio Altura Peso Piezas Desc");
-        for(int i = 0; i < Data.arr.length; i++){
-            System.out.println(Data.arr[i].visualizarObrasToString());
-        }
-    }
-
-    private static void visualizarObra(){
-        Utils.mostrarObras();
-        int id = Utils.buscarID();
-        System.out.println(Data.arr[id].visualizarObraToString());
-        
-    }
-
-    private static void obtenerPrecio(){
-        int id = Utils.buscarID();
-        Precio.obtenerPrecioObra(Data.arr[id]);
-
-    }
-
-    private static void imprimirEtiqueta(){
-        Utils.mostrarObras();
-        int id = Utils.buscarID();
-        System.out.println(Data.arr[id].imprimirEtiquetaToString());
     }
 }
