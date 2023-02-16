@@ -12,4 +12,8 @@ public class Escultura extends Obra{
     public void setMaterial(String material) {
         this.material = material;
     }
+    public String toString() {
+        return material;
+    }
+    
 }

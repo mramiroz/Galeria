@@ -16,7 +16,6 @@ public class Galeria {
     };
 
     public static int buscarID(){
-        Scanner sc = new Scanner(System.in);
         int opcion;
         int i = 0;
         do{
@@ -36,9 +35,14 @@ public class Galeria {
     }
 
     static void visualizarObras(){
-        System.out.println("Id  Nombre    Autor   Tipo Precio Altura Peso Piezas Desc");
+        System.out.println("Id  Nombre    Autor   Tipo Precio Altura Peso Piezas Desc    Tecnica o Material");
         for(int i = 0; i < galeriaObras.length; i++){
-            System.out.println(galeriaObras[i].visualizarObrasToString());
+            System.out.print(galeriaObras[i].visualizarObrasToString() + "      ");
+            if (galeriaObras[i].getTipo() == "Escultura")
+                System.out.print(((Escultura)galeriaObras[i]).toString());
+            else if(galeriaObras[i].getTipo() == "Pintura")
+                System.out.print(((Pintura)galeriaObras[i]).toString());
+            System.out.println();
         }
     }
     static void visualizarObra(){
@@ -69,7 +73,6 @@ public class Galeria {
             System.out.print("Introduce el tipo de obra si es Escultura 1, si es Pintura 2: ");
             tipo = evitaErroresScannerI();
         }while(tipo != 1 && tipo != 2);
-        sc.nextLine();
         System.out.print("Introduce el nombre de la obra: ");
         String nombre  = sc.nextLine();
         System.out.print("Introduce el autor de la obra: ");
@@ -83,7 +86,6 @@ public class Galeria {
         System.out.print("Introduce el peso de la obra: ");
         double peso  = evitaErroresScannerD();
         System.out.print("Introduce la descripción de la obra: ");
-        sc.nextLine();
         String desc  = sc.nextLine();
         if (tipo == 1){
             System.out.print("Introduce el material de la obra: ");
@@ -101,89 +103,143 @@ public class Galeria {
     }
 
     public static void modificarObra(){
+        final int TIPO_OBRA = 1;
+        final int NOMBRE_OBRA = 2;
+        final int AUTOR_OBRA = 3;
+        final int PRECIO_OBRA = 4;
+        final int ALTURA_OBRA = 5;
+        final int PIEZAS_OBRA = 6;
+        final int PESO_OBRA = 7;
+        final int DESCRIPCION_OBRA = 8;
+        final int MATERIAL_TECNICA = 9;
+        final int FINALIZAR = 10;
         Scanner sc = new Scanner(System.in);
         int id = buscarID();
         int opcion;
         do {
-            System.out.println("1. Modificar nombre");
-            System.out.println("2. Modificar autor");
-            System.out.println("3. Modificar precio");
-            System.out.println("4. Modificar altura");
-            System.out.println("5. Modificar piezas");
-            System.out.println("6. Modificar peso");
-            System.out.println("7. Modificar descripción");
-            opcion = sc.nextInt();
+            System.out.println(galeriaObras[id].visualizarObraToString());
+            System.out.println("1. Modificar tipo");
+            System.out.println("2. Modificar nombre");
+            System.out.println("3. Modificar autor");
+            System.out.println("4. Modificar precio");
+            System.out.println("5. Modificar altura");
+            System.out.println("6. Modificar piezas");
+            System.out.println("7. Modificar peso");
+            System.out.println("8. Modificar descripción");
+            System.out.println("9. Modificar técnica o material");
+            System.out.println("10. Finalizar de modificar");
+            System.out.print("Introduce opción: ");
+            opcion = evitaErroresScannerI();
             switch(opcion)
             {
-                case 1:
+                case TIPO_OBRA:
+                    System.out.println("Introduce nuevo tipo de la obra: ");
+                    cambiarTipoObra(id);
+                    break;
+                case NOMBRE_OBRA:
+                    System.out.print("Introduce nuevo nombre de la obra: ");
                     String nombre = sc.nextLine();
                     galeriaObras[id].setNombre(nombre);
                     break;
-                case 2:
+                case AUTOR_OBRA:
+                    System.out.print("Introduce nuevo autor de la obra: ");
                     String autor = sc.nextLine();
                     galeriaObras[id].setAutor(autor);
                     break;
-                case 3:
-                    int precio = sc.nextInt();
+                case PRECIO_OBRA:
+                    System.out.print("Introduce nuevo precio de la obra: ");
+                    double precio = evitaErroresScannerD();
                     galeriaObras[id].setPrecio(precio);
                     break;
-                case 4:
-                    int altura = sc.nextInt();
+                case ALTURA_OBRA:
+                    System.out.print("Introduce nueva altura de la obra: ");
+                    double altura = evitaErroresScannerD();
                     galeriaObras[id].setAltura(altura);
                     break;
-                case 5:
-                    int piezas = sc.nextInt();
+                case PIEZAS_OBRA:
+                    System.out.print("Introduce nuevo número de piezas de la obra: ");
+                    int piezas = evitaErroresScannerI();
                     galeriaObras[id].setPiezas(piezas);
                     break;
-                case 6:
-                    int peso = sc.nextInt();
-                    galeriaObras[id].setPeso(sc.nextInt(peso));
+                case PESO_OBRA:
+                    System.out.print("Introduce nuevo peso de la obra: ");
+                    double peso = evitaErroresScannerD();
+                    galeriaObras[id].setPeso(peso);
                     break;
-                case 7:
+                case DESCRIPCION_OBRA:
+                    System.out.print("Introduce nuevo descripción de la obra: ");
                     String desc = sc.nextLine();
                     galeriaObras[id].setDesc(desc);
                     break;
+                case MATERIAL_TECNICA:
+                    if (galeriaObras[id].getTipo() == "Escultura"){
+                        System.out.print("Introduce nuevo material de la obra: ");
+                        String material = sc.nextLine();
+                        ((Escultura)galeriaObras[id]).setMaterial(material);
+                    }
+                    else if (galeriaObras[id].getTipo() == "Pintura"){
+                        System.out.print("Introduce nueva técnica de la obra: ");
+                        String tecnica = sc.nextLine();
+                        ((Pintura)galeriaObras[id]).setTecnica(tecnica);
+                    }
+                    break;
+                default:
+                System.out.println("Introduce numero valido: ");
+
             }
             
-        } while (opcion != 8);
+        } while (opcion != FINALIZAR);
 
+    }
+
+    public static void cambiarTipoObra(int id){
+        Obra newObra = null;
+        int opcion = 0;
+        int put_id = galeriaObras[id].getId();
+        String nombre = galeriaObras[id].getNombre();
+        String autor = galeriaObras[id].getAutor();
+        double precio = galeriaObras[id].getPrecio();
+        double altura = galeriaObras[id].getAltura();
+        int piezas = galeriaObras[id].getPiezas();
+        double peso = galeriaObras[id].getPeso();
+        String desc = galeriaObras[id].getDesc();
+
+        System.out.println("La obra es tipo " + galeriaObras[id].getTipo());
+        System.out.println("Si quiere cambiar de tipo escriba 1 si no 0: ");
+        do{
+            opcion = evitaErroresScannerI();
+        }while(opcion != 1 && opcion != 0);
+        if (opcion == 1){
+            if (galeriaObras[id].getTipo() == "Escultura")
+                newObra = new Pintura(put_id, "Pintura", nombre, autor, precio, altura, peso, piezas, desc, null);
+            else if (galeriaObras[id].getTipo() == "Pintura")
+                newObra = new Escultura(put_id, "Escultura", nombre, autor, precio, altura, peso, piezas, desc, null);
+            galeriaObras[id] = newObra;
+        }
     }
 
     public static double evitaErroresScannerD(){
         Scanner sc = new Scanner(System.in);
-        double output = 0;
-        int control = 0;
-        do {
-            try{
-                output = sc.nextDouble();
-                control = 1;
-            }
-            catch (InputMismatchException ime){
-                System.out.println("Error en la inserción de tipo de dato");
-                System.out.println("Introduce dato: ");
-                continue;
-            }
-        }while(control == 0);
-
-        return (output);
+        try{
+            return sc.nextInt();
+        }
+        catch (InputMismatchException ime){
+            System.out.println("Error en la inserción de tipo de dato");
+            System.out.print("Introduce dato: ");
+            sc.nextLine();
+            return evitaErroresScannerI();
+        }
     }
     public static int evitaErroresScannerI(){
         Scanner sc = new Scanner(System.in);
-        int output = 0;
-        int control = 0;
-        do {
-            try{
-                output = sc.nextInt();
-                control = 1;
-            }
-            catch (InputMismatchException ime){
-                System.out.println("Error en la inserción de tipo de dato");
-                System.out.print("Introduce dato: ");
-                sc.next();
-                continue;
-            }
-        }while(control == 0);
-
-        return (output);
+        try{
+            return sc.nextInt();
+        }
+        catch (InputMismatchException ime){
+            System.out.println("Error en la inserción de tipo de dato");
+            System.out.print("Introduce dato: ");
+            sc.nextLine();
+            return evitaErroresScannerI();
+        }
     }
 }

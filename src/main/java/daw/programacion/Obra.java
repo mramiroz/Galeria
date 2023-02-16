@@ -1,6 +1,6 @@
 package daw.programacion;
 
-public class Obra {
+public abstract class Obra {
     private int id;
     private String tipo;
     private String nombre;
@@ -30,6 +30,30 @@ public class Obra {
     
     public String getTipo() {
         return tipo;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public int getPiezas() {
+        return piezas;
     }
 
     public void setTipo(String tipo) {
@@ -69,7 +93,7 @@ public class Obra {
     }
 
     public String visualizarObraToString() {
-        return "Nombre: " + nombre + "\nAutor: " + autor + "\nPrecio: " + precio
+        return "Tipo: " + tipo + "\nNombre: " + nombre + "\nAutor: " + autor + "\nPrecio: " + precio
                 + "\nAltura: " + altura + "\nPeso: " + peso + "\nPiezas: " + piezas + "\nDescripción: " + desc;
     }
 
@@ -128,7 +152,7 @@ public class Obra {
         if (tipo == "Pintura")
             descuentoObra = precioVenta * 0.1;
         else if(tipo == "Escultura")
-            descuentoObra = (precioVenta * 0.2) + 50;
+            descuentoObra = (precioVenta * 0.2) - 50;
         precioFinal = precioVenta - descuentoObra;
         System.out.println("Precio final de venta(€): " + precioFinal);
     }

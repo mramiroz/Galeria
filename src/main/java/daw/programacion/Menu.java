@@ -1,5 +1,6 @@
 package daw.programacion;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -11,7 +12,7 @@ public class Menu {
         final int OBTENER_PRECIO = 5;
         final int IMPRIMIR = 6;
         final int FINALIZAR = 7;
-        int opcion;
+        int opcion = 0;
         Scanner sc = new Scanner(System.in);
         do
         {
@@ -25,7 +26,13 @@ public class Menu {
             System.out.println("7. Salir del programa");
             System.out.println("-----------------------------------------------------------------");
             System.out.print("Introduce el número de la funcionalidad: ");
-            opcion = sc.nextInt();
+            try{
+                opcion = sc.nextInt();
+            }
+            catch (InputMismatchException ime){
+                System.out.println("Error en la inserción de tipo de dato");
+                sc.next();
+            }
             switch(opcion)
             {
                 case VISUALIZAR_TODO:
