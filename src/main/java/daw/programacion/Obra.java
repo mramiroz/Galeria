@@ -1,6 +1,6 @@
 package daw.programacion;
 
-public abstract class Obra {
+public class Obra {
     private int id;
     private String tipo;
     private String nombre;
@@ -115,45 +115,68 @@ public abstract class Obra {
          "\nPrecio(€): " + precio;
     }
 
-    public void obtenerPrecio(){
+    public double obternerComisionGaleria(){
+        double comisionGaleria;
 
-        double precioVenta = 0;
-        double comisionGaleria = 0;
-        double importePeso = 0;
-        double importeAltura = 0;
-        double importeAdicional = 0;
-        double descuentoObra = 0;
-        double precioFinal = 0;
-
-        System.out.println(obternerPrecioToString());
         comisionGaleria = precio * 0.25;
         System.out.println("Comision galeria: " + comisionGaleria);
+        return comisionGaleria;
+    }
+    public double obtenerImportePeso(){
+        double importePeso;
 
         if (peso <= 0.001)
             importePeso = 20;
         else
             importePeso = 100;
         System.out.println("Importe por peso(€): " + importePeso);
+        return importePeso;
+    }
 
+    public double obtenerImporteAltura(){
+        double importeAltura = 0;
         if (altura <= 2)
             importeAltura = 20;
         else{
-            for(int i = 0; i < piezas; i++)
-                importeAltura += 100;
+                importeAltura = 100;
         }
         System.out.println("Importe por altura(€): " + importeAltura);
+        return importeAltura;
+    }
+
+    public double obtenerImporteAdicional(){
+        double importeAdicional = 0;
+
         for(int i = 3; i <= piezas; i++){
             importeAdicional += 10;
             System.out.println("Importe adicional - Pieza " + i + " (€): 10");
         }
-        precioVenta = comisionGaleria + importeAdicional + importeAltura + importePeso + importeAltura;
+        return importeAdicional;
+    }
+
+    public void obtenerPrecio(){
+
+        double precioVenta = 0;
+        double descuentoObra = 0;
+        double sobrecoste = 0;
+        double precioFinal = 0;
+
+        System.out.println(obternerPrecioToString());
+        System.out.println("------------------------------------------");
+        precioVenta = obternerComisionGaleria() + obtenerImportePeso() + obtenerImporteAltura() + obtenerImporteAdicional();
         System.out.println("Precio de venta(€): " + precioVenta);
 
-        if (tipo == "Pintura")
+        if (tipo == "Pintura"){
             descuentoObra = precioVenta * 0.1;
-        else if(tipo == "Escultura")
-            descuentoObra = (precioVenta * 0.2) - 50;
-        precioFinal = precioVenta - descuentoObra;
+            System.out.println("Descuento (10% Pintura): " + descuentoObra);
+        }
+        else if(tipo == "Escultura"){
+            descuentoObra = (precioVenta * 0.2);
+            sobrecoste = 50;
+            System.out.println("Descuento (20% Escultura): " + descuentoObra);
+            System.out.println("Sobrecoste Manipulación: " + sobrecoste);
+        }
+        precioFinal = precioVenta - descuentoObra + sobrecoste;
         System.out.println("Precio final de venta(€): " + precioFinal);
     }
 }
