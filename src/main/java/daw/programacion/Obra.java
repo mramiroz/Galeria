@@ -91,30 +91,6 @@ public class Obra {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-    public String visualizarObraToString() {
-        return "Tipo: " + tipo + "\nNombre: " + nombre + "\nAutor: " + autor + "\nPrecio: " + precio
-                + "\nAltura: " + altura + "\nPeso: " + peso + "\nPiezas: " + piezas + "\nDescripción: " + desc;
-    }
-
-    public String visualizarObrasToString() {
-        return id + " " + nombre + "  " +  autor + "  " + tipo + "  " +  precio
-                + "  " + altura + "  " + peso + "  " + piezas + "  " + desc;
-    }
-
-    public String imprimirEtiquetaToString() {
-        return "Nombre: " + nombre + "\nAutor: " + autor + "\nDescripción: " + desc;
-    }
-
-    public String mostrarObrasToString(){
-        return id + "   " + nombre; 
-    }
-
-    public String obternerPrecioToString() {
-        return "Nombre: " + nombre + "\nAltura(m): " + altura + "\nPeso(t): " + peso + "\nNumero de piezas: "  + piezas +
-         "\nPrecio(€): " + precio;
-    }
-
     public double obternerComisionGaleria(){
         double comisionGaleria;
 
@@ -179,5 +155,28 @@ public class Obra {
         precioFinal = precioVenta - descuentoObra + sobrecoste;
         System.out.println("Precio final de venta(€): " + precioFinal);
         return precioFinal;
+    }
+
+    public String visualizarObraToString() {
+        return "Tipo: " + tipo + "\nNombre: " + nombre + "\nAutor: " + autor + "\nPrecio: " + precio
+                + "\nAltura: " + altura + "\nPeso: " + peso + "\nPiezas: " + piezas + "\nDescripción: " + desc;
+    }
+
+    public String visualizarObrasToString() {
+        return id + " " + nombre + "  " +  autor + "  " + tipo + "  " +  precio
+                + "  " + altura + "  " + peso + "  " + piezas + "  " + desc;
+    }
+
+    public String imprimirEtiquetaToString() {
+        return "Nombre: " + nombre + "\nAutor: " + autor + "\nDescripción: " + desc;
+    }
+
+    public String mostrarObrasToString(){
+        return id + "   " + nombre; 
+    }
+
+    public String obternerPrecioToString() {
+        return "Nombre: " + nombre + "\nAltura(m): " + altura + "\nPeso(t): " + peso + "\nNumero de piezas: "  + piezas +
+         "\nPrecio(€): " + precio;
     }
 }
