@@ -51,9 +51,13 @@ public class Obra {
     public double getPeso() {
         return peso;
     }
-
+    
     public int getPiezas() {
         return piezas;
+    }
+    
+    public String getDesc() {
+        return desc;
     }
 
     public void setTipo(String tipo) {
@@ -86,10 +90,6 @@ public class Obra {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public String getDesc() {
-        return desc;
     }
 
     public String visualizarObraToString() {
@@ -154,7 +154,7 @@ public class Obra {
         return importeAdicional;
     }
 
-    public void obtenerPrecio(){
+    public double obtenerPrecio(){
 
         double precioVenta = 0;
         double descuentoObra = 0;
@@ -178,5 +178,6 @@ public class Obra {
         }
         precioFinal = precioVenta - descuentoObra + sobrecoste;
         System.out.println("Precio final de venta(€): " + precioFinal);
+        return precioFinal;
     }
 }

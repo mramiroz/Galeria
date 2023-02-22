@@ -8,9 +8,5 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MenuTest {
-
-    @Test
-    public void testIndice() {
-        
-    }
+    //No puedo hacer test porque todos los metodos utilizan scanners
 }

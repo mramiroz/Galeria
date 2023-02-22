@@ -2,6 +2,9 @@ package daw.programacion;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.rmi.server.ExportException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,102 +75,125 @@ public class ObraTest {
         String expected = "Escultura";
         assertEquals(expected, obra.getTipo(), "No se ha establecido bien el tipo");
     }
-
-    @Test
-    void testImprimirEtiquetaToString() {
-
-    }
-
-    @Test
-    void testMostrarObrasToString() {
-
-    }
-
-    @Test
-    void testObtenerImporteAdicional() {
-
-    }
-
     @Test
     void testObtenerImporteAlturaMenorIgual2() {
         double expected = 20;
-        assertEquals(expected, obra.obtenerImporteAltura());
+        assertEquals(expected, obra.obtenerImporteAltura(), "Ha habido un error al calcular el importe de la altura");
     }
 
     @Test
     void testObtenerImporteAlturaMayorIgual2() {
         double expected = 100;
         obra.setAltura(4);
-        assertEquals(expected, obra.obtenerImporteAltura());
+        assertEquals(expected, obra.obtenerImporteAltura(), "Ha habido un error al calcular el importe de la altura");
     }
 
     @Test
-    void testObtenerImportePeso() {
-        double expected = 10
+    void testObtenerImportePesoMenorUnKg() {
+        double expected = 20;
+        obra.setPeso(0.001);
+        assertEquals(expected, obra.obtenerImportePeso(), "Ha habido un error al calcular el importe del peso");
     }
 
     @Test
-    void testObtenerPrecio() {
+    void testObtenerImportePesoMayorUnKg() {
+        double expected = 100;
+        obra.setPeso(1);
+        assertEquals(expected, obra.obtenerImportePeso(), "Ha habido un error al calcular el importe del peso");
+    }
 
+    @Test
+    void testObtenerImporteAdicionalMenor3piezas() {
+        double expected = 0;
+        obra.setPiezas(2);
+        assertEquals(expected, obra.obtenerImporteAdicional());
+    }
+
+    @Test
+    void testObtenerImporteAdicionalMayor3piezas4piezas() {
+        double expected = 20;
+        obra.setPiezas(4);
+        assertEquals(expected, obra.obtenerImporteAdicional());
+    }
+    @Test
+    void testObtenerImporteAdicionalMenor3piezas10piezas() {
+        double expected = 80;
+        obra.setPiezas(10);
+        assertEquals(expected, obra.obtenerImporteAdicional());
     }
 
     @Test
     void testObternerComisionGaleria() {
-
+        double expected = 25;
+        assertEquals(expected, obra.obternerComisionGaleria());
     }
 
     @Test
-    void testObternerPrecioToString() {
+    void testObternerPrecioEscultura() {
+        double expected = 182;
+        assertEquals(expected, obra.obtenerPrecio());
+    }
 
+    @Test
+    void testObternerPrecioPintura() {
+        double expected = 148.5;
+        obra.setTipo("Pintura");
+        assertEquals(expected, obra.obtenerPrecio());
     }
 
     @Test
     void testSetAltura() {
-
+        double expected = 2;
+        obra.setAltura(2);
+        assertEquals(expected, obra.getAltura());
     }
 
     @Test
     void testSetAutor() {
-
+        String expected = "Autor";
+        obra.setAutor("Autor");
+        assertEquals(expected, obra.getAutor());
     }
 
     @Test
     void testSetDesc() {
-
+        String expected = "asd";
+        obra.setDesc("asd");
+        assertEquals(expected, obra.getDesc());
     }
 
     @Test
     void testSetNombre() {
-
+        String expected = "Nombre";
+        obra.setNombre("Nombre");
+        assertEquals(expected, obra.getNombre());
     }
 
     @Test
     void testSetPeso() {
-
+        double expected = 2;
+        obra.setPeso(2);
+        assertEquals(expected, obra.getPeso());
     }
 
     @Test
     void testSetPiezas() {
-
+        int expected = 2;
+        obra.setPiezas(2);
+        assertEquals(expected, obra.getPiezas());
     }
 
     @Test
     void testSetPrecio() {
-
+        double expected = 2;
+        obra.setPrecio(2);
+        assertEquals(expected, obra.getPrecio());
     }
 
     @Test
     void testSetTipo() {
-
-    }
-
-    @Test
-    void testVisualizarObraToString() {
-
-    }
-
-    @Test
-    void testVisualizarObrasToString() {
-
+        String expected = "Escultura";
+        obra.setTipo("Escultura");
+        assertEquals(expected, obra.getTipo());
     }
 }

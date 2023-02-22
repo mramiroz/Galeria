@@ -8,7 +8,7 @@ public class Galeria {
     static Obra obra2 = new Escultura(002, "Escultura", "Medusa", "Donatello", 30, 2, 20, 1,"Obra renacimiento", "metal");
     static Obra obra3 = new Pintura(003, "Pintura", "Guernica", "Picasso", 30, 2, 20, 1, "Guerra Civil española", "oleo");
     static Obra obra4 = new Pintura(004, "Pintura", "Tres delicias", "Bosco", 30, 2, 20, 3, "Triptico", "oleo");
-    public static Obra[] galeriaObras = {
+    private static Obra[] galeriaObras = {
         obra1,
         obra2,
         obra3,
